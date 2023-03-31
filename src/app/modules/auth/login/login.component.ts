@@ -21,7 +21,7 @@ export class LoginComponent {
     this.authService.login(this.loginDto).subscribe(
       data => {
         localStorage.setItem('token', String(data));
-        this.router.navigate(['/']);
+        this.router.navigate(['/'])
       }
     );
   }

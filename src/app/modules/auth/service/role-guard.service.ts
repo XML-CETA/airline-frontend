@@ -17,7 +17,7 @@ export class RoleGuardService implements CanActivate{
     if (payload.custom_claims.role !== expectedRole){
       return false;
     }
+    
     return true;
-  
   }
 }
