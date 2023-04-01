@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { LoginDto } from '../model/loginDto';
@@ -13,6 +15,13 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router:Router) { }
   public loginDto: LoginDto = {} as LoginDto;
+  public usernameControl = new FormControl('', Validators.required);
+  public passwordControl = new FormControl('', Validators.required);
+  public errorMessage:string = '';
+
+  get validateFields():boolean {
+    return (this.usernameControl.valid && this.passwordControl.valid);
+  }
 
   ngOnInit(): void {
   }
@@ -22,8 +31,12 @@ export class LoginComponent {
       data => {
         localStorage.setItem('token', String(data));
         this.router.navigate(['/']);
+      },
+      error => {
+          this.errorMessage = 'Invalid username or password';
       }
     );
+   
   }
 
 }
