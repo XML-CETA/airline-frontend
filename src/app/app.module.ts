@@ -8,6 +8,7 @@ import { TokenInterceptor } from './modules/auth/token.interceptor';
 import { RegisterComponent } from './modules/users/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PagesModule } from './modules/pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     AuthModule,
     HttpClientModule,
+    PagesModule,
 	  FormsModule,
 	  ReactiveFormsModule
   ],
