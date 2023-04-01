@@ -6,7 +6,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { TokenInterceptor } from './modules/auth/token.interceptor';
 import { RegisterComponent } from './modules/users/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AuthModule,
     HttpClientModule,
-	FormsModule
+	FormsModule,
+	ReactiveFormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
 import { User } from '../models/user';
 import { RegisterServiceService } from '../service/register-service.service';
 
@@ -17,6 +18,11 @@ export class RegisterComponent {
 		password: ''
 	};
 
+	public usernameControl = new FormControl('', Validators.required);
+	public passwordControl = new FormControl('', Validators.required);
+	public nameControl = new FormControl('', Validators.required);
+	public surnameControl = new FormControl('', Validators.required);
+
 	public confirmPassword = this.user.password;
 
 	constructor(
@@ -25,11 +31,6 @@ export class RegisterComponent {
 	) {}
 
 	public register() {
-		if (this.validateUser()) {
-			alert('Not all fields filled');
-			return;
-		};
-
 		if (this.validatePassword()) {
 			alert('Passwords do not match');
 			return;
@@ -44,11 +45,11 @@ export class RegisterComponent {
 		});
 	}
 
-	private validateUser() {
-		return this.user.username === '' ||
-			this.user.password === '' ||
-			this.user.name === '' ||
-			this.user.surname === ''
+	public validateFields() {
+		return this.usernameControl.valid &&
+			this.passwordControl.valid &&
+			this.nameControl.valid &&
+			this.surnameControl.valid;
 	}
 
 	private validatePassword() {
