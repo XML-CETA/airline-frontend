@@ -8,20 +8,24 @@ import { TokenInterceptor } from './modules/auth/token.interceptor';
 import { RegisterComponent } from './modules/users/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FlightCreateFormComponent } from './modules/admin/flight-create-form/flight-create-form.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    FlightCreateFormComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
     HttpClientModule,
-	  FormsModule,
-	  ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   bootstrap: [AppComponent]
