@@ -8,7 +8,7 @@
                             <tr>
                                 <th scope="col"
                                     class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Starting point
+
                                 </th>
                                 <th scope="col"
                                     class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
@@ -66,8 +66,10 @@
                                     {{format(flight.dateTime)}}</td>
                                 <td
                                     class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap flex items-center ">
-                                    <button (click)="deleteFlight(flight.id)"
+                                    <button *ngIf="isAdmin()" (click)="deleteFlight(flight.id)"
                                         class="bg-red-500 text-white w-full rounded">Delete</button>
+                                    <button *ngIf="isRegular()" (click)="buyTickets(flight.id)"
+                                        class="bg-green-500 text-white max-w-prose w-full rounded">Buy tickets</button>
                                 </td>
                             </tr>
                         </tbody>

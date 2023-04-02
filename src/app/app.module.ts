@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FlightCreateFormComponent } from './modules/admin/flight-create-form/flight-create-form.component';
 import { FlightsViewComponent } from './modules/admin/flights-view/flights-view.component';
-import { FlightsViewUsersComponent } from './modules/users/flights-view-users/flights-view-users.component';
 import { PagesModule } from './modules/pages/pages.module';
 
 @NgModule({
@@ -20,8 +19,6 @@ import { PagesModule } from './modules/pages/pages.module';
     NavbarComponent,
     FlightCreateFormComponent,
     FlightsViewComponent,
-    FlightsViewUsersComponent,
-
   ],
   imports: [
     BrowserModule,
