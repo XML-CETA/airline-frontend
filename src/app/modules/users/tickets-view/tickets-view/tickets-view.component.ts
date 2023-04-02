@@ -22,7 +22,6 @@ export class TicketsViewComponent implements OnInit {
   getAllTickets(){
     this.ticketService.getTickets().subscribe(res => {
       this.tickets = res;
-      console.log(res)
     })
   }
 
