@@ -9,6 +9,8 @@ import { RegisterComponent } from './modules/users/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FlightCreateFormComponent } from './modules/admin/flight-create-form/flight-create-form.component';
+import { FlightsViewComponent } from './modules/admin/flights-view/flights-view.component';
+import { FlightsViewUsersComponent } from './modules/users/flights-view-users/flights-view-users.component';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { FlightCreateFormComponent } from './modules/admin/flight-create-form/fl
     RegisterComponent,
     NavbarComponent,
     FlightCreateFormComponent,
+    FlightsViewComponent,
+    FlightsViewUsersComponent,
 
   ],
   imports: [

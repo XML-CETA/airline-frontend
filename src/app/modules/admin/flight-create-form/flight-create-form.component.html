@@ -1,23 +1,48 @@
-<form>
-    <div class="flex items-center justify-center h-screen bg-gray-100">
-        <div class="bg-white py-6 rounded-md px-10 max-w-lg shadow-md">
-            <h1 class="text-center text-lg font-bold text-gray-500">Make a flight</h1>
-            <div class="space-y-4 mt-6">
-                <div class="w-full">
-                    <input type="text" placeholder="Starting point" class="px-4 py-2 bg-gray-50" />
-                </div>
-                <div class="w-full">
-                    <input type="text" placeholder="Destination" class="px-4 py-2 bg-gray-50" />
-                </div>
-                <div class="w-full">
-                    <input type="text" placeholder="email" class="px-4 py-2 bg-gray-50" />
-                </div>
-                <div class="w-full">
-                    <input type="text" placeholder="password" class="px-4 py-2 bg-gray-50" />
-                </div>
-            </div>
-            <button
-                class="w-full mt-5 bg-indigo-600 text-white py-2 rounded-md font-semibold tracking-tight">Register</button>
-        </div>
-    </div>
-</form>
+<section class="bg-gray-50 light:bg-gray-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 ">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                    Make a flight
+                </h1>
+                <form class="space-y-4 md:space-y-6" action="#">
+                    <div>
+                        <label for="startingPoint" class="block mb-2 text-sm font-medium text-gray-900 ">Starting
+                            point</label>
+                        <input type="text" name="startingPoint" [formControl]="startControl" [(ngModel)]="startingPoint"
+                            id="startingPoint"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="destination"
+                            class="block mb-2 text-sm font-medium text-gray-900 light:text-white">Destionation</label>
+                        <input type="text" name="destination" [formControl]="destinationControl"
+                            [(ngModel)]="destination" id="surname"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500">
+
+                    </div>
+                    <div>
+                        <label for="price"
+                            class="block mb-2 text-sm font-medium text-gray-900 light:text-white">Price</label>
+                        <input type="number" [formControl]="priceControl" [(ngModel)]="price" name="price" id="price"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="allSeats"
+                            class="block mb-2 text-sm font-medium text-gray-900 light:text-white">Number
+                            of seats</label>
+                        <input type="number" [formControl]="seatsControl" [(ngModel)]="allSeats" name="allSeats"
+                            id="allSeats"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="dateTimer"
+                            class="block mb-2 text-sm font-medium text-gray-900 light:text-white">Date of
+                            flight</label>
+                        <input type="datetime-local" [(ngModel)]="dateTime" name="dateTimer" id="dateTimer"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500">
+                    </div>
+                    <button (click)="makeFlight()" [disabled]="!validateFields()"
+                        class="w-full bg-blue-500 disabled:bg-gray-400 content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                        Create flight
+                    </button>
