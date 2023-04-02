@@ -12,7 +12,7 @@ export class SearchBarComponent {
   public startingPoint = ""
   public destination = ""
   public neededSeats = 0
-  public dateTime = new Date()
+  public dateTime:Date = new Date()
 
   constructor(
     private flightsService: FlightService,
@@ -34,8 +34,7 @@ export class SearchBarComponent {
       neededSeats: this.neededSeats,
       dateTime: this.convertToDateTime(this.dateTime)
     }
-
     this.flightsService.setMyObject(search)
     this.router.navigate(['/searched'])
-  }
+}
 }

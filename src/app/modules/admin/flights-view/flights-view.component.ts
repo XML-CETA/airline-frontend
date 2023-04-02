@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ShowFlightDto } from '../models/show-flights-dto';
 import { Router } from '@angular/router';
 import { FlightService } from '../flight.service';
@@ -9,6 +9,7 @@ import { AuthService } from '../../auth/service/auth.service';
   templateUrl: './flights-view.component.html',
   styleUrls: ['./flights-view.component.css']
 })
+
 export class FlightsViewComponent implements OnInit {
 
   public flights: ShowFlightDto[] = []

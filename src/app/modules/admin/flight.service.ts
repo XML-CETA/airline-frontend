@@ -4,6 +4,7 @@ import { CreateFlightDto } from './models/create-flight-dto';
 import { ShowFlightDto } from './models/show-flights-dto';
 import { SearchFlightDto } from './models/search-flight-dto'
 import { FilteredFlightDto } from './models/filtered-flight-dto';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -40,8 +41,8 @@ export class FlightService {
     return this.http.delete(url, this.httpOptions);
   }
 
-  public search() {
-    const url = this.apiUrl + `/` //search pogoditi
+  public search():Observable<FilteredFlightDto[]> {
+    const url = this.apiUrl + `/search`
     return this.http.post<FilteredFlightDto[]>(url, this.myObject, this.httpOptions);
   }
 }

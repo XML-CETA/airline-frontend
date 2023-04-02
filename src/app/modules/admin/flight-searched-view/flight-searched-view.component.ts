@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FilteredFlightDto } from '../models/filtered-flight-dto';
 import { FlightService } from '../flight.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from '../../auth/service/auth.service';
+import { SearchFlightDto } from '../models/search-flight-dto';
 
 @Component({
   selector: 'app-flight-searched-view',
@@ -11,17 +12,17 @@ import { AuthService } from '../../auth/service/auth.service';
 })
 export class FlightSearchedViewComponent {
   public flights: FilteredFlightDto[] = []
-
-  public startingPoint = ""
-  public destination = ""
-  public seats = 0
-  public dateTime = new Date()
+  public startingPoint:string = ""
+  public destination:string = ""
+  public neededSeats:number = 0
+  public dateTime:Date = new Date()
 
   constructor(
     private flightsService: FlightService,
     private router: Router,
     private auth: AuthService
   ) { }
+  
 
   getAllFlights() {
     this.flightsService.search().subscribe(res => {
@@ -30,13 +31,22 @@ export class FlightSearchedViewComponent {
   }
 
   ngOnInit(): void {
-    this.getAllFlights()
+    this.router.events.subscribe(event => {
+      this.getAllFlights()
+    });
   }
 
   format(dt: Date | null) {
     if (dt == null) return ""
     let date = new Date(dt)
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+    date.setHours(date.getHours()+date.getTimezoneOffset()/60)
+    let minute 
+    if (date.getMinutes()==0){
+      minute= "00"
+    }else{
+      minute= date.getMinutes()
+    }
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${minute}`
   }
 
 
