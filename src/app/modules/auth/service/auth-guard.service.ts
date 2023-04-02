@@ -16,16 +16,16 @@ export class AuthGuardService implements CanActivate{
     const expectedRole = route.data['expectedRole'];
     const token:any = localStorage.getItem('token');
 
-    if (token==null || this.jwtHelper.isTokenExpired(token)){
+	if (token==null || this.jwtHelper.isTokenExpired(token)){
       return false;
     }
-    
+
     const payload:any = jwtDecode(token)
 
     if (payload.custom_claims.role !== expectedRole){
       return false;
     }
-    
+
     return true;
   }
 }
