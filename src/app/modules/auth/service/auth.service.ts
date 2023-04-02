@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginDto } from '../model/loginDto';
-import { AuthResponse } from '../model/authResponse';
-
+import jwtDecode from 'jwt-decode';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -20,4 +19,11 @@ export class AuthService {
     return this.http.post(this.apiUrl, loginDto, httpOptions);
   }
 
+  public getLoggedInRole(): string {
+	  const token = localStorage.getItem('token');
+	  if (!token) return 'Unauthenticated';
+
+	  const role = (<any>jwtDecode(token)).custom_claims.role;
+	  return role;
+  }
 }

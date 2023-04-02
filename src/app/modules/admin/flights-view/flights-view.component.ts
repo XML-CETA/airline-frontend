@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShowFlightDto } from '../models/show-flights-dto';
 import { Router } from '@angular/router';
 import { FlightService } from '../flight.service';
+import { AuthService } from '../../auth/service/auth.service';
 
 @Component({
   selector: 'app-flights-view',
@@ -14,7 +15,8 @@ export class FlightsViewComponent implements OnInit {
 
   constructor(
     private flightsService: FlightService,
-    private router: Router
+    private router: Router,
+	private auth: AuthService
   ) { }
 
   getAllFlights() {
@@ -47,5 +49,14 @@ export class FlightsViewComponent implements OnInit {
     });
   }
 
+  buyTickets(_id: string) {
+  }
 
+  public isAdmin(): boolean {
+	  return this.auth.getLoggedInRole() === 'Admin';
+  }
+
+  public isRegular(): boolean {
+	  return this.auth.getLoggedInRole() === 'Regular';
+  }
 }

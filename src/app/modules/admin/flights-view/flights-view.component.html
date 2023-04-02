@@ -1,29 +1,29 @@
-<div class="mx-auto">
+<div class="mx-auto px-20 py-10">
     <div class="flex flex-col">
         <div class="overflow-x-auto shadow-md sm:rounded-lg">
             <div class="inline-block min-w-full align-middle">
                 <div class="overflow-hidden ">
-                    <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
-                        <thead class="bg-gray-100 dark:bg-gray-700">
+                    <table class="min-w-full divide-y divide-gray-200 table-fixed light:divide-gray-700">
+                        <thead class="bg-gray-100 light:bg-gray-700">
                             <tr>
                                 <th scope="col"
-                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                    Starting point
+                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase light:text-gray-400">
+
                                 </th>
                                 <th scope="col"
-                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase light:text-gray-400">
                                     Destination
                                 </th>
                                 <th scope="col"
-                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase light:text-gray-400">
                                     Price
                                 </th>
                                 <th scope="col"
-                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase light:text-gray-400">
                                     Seats
                                 </th>
                                 <th scope="col"
-                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase light:text-gray-400">
                                     Departure time
                                 </th>
                                 <th scope="col" class="p-4">
@@ -48,26 +48,28 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" *ngFor="let flight of flights">
+                        <tbody class="bg-white divide-y divide-gray-200 light:bg-gray-800 light:divide-gray-700">
+                            <tr class="hover:bg-gray-100 light:hover:bg-gray-700" *ngFor="let flight of flights">
                                 <td
-                                    class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap light:text-white">
                                     {{flight.startingPoint}}</td>
                                 <td
-                                    class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap light:text-white">
                                     {{flight.destination}}</td>
                                 <td
-                                    class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap light:text-white">
                                     {{flight.price}}</td>
-                                <td class="py-4 px-6 text-sm font-big text-gray-900 whitespace-nowrap dark:text-white">
+                                <td class="py-4 px-6 text-sm font-big text-gray-900 whitespace-nowrap light:text-white">
                                     {{flight.remainingSeats}} / {{flight.allSeats}}</td>
                                 <td
-                                    class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap light:text-white">
                                     {{format(flight.dateTime)}}</td>
                                 <td
                                     class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap flex items-center ">
-                                    <button (click)="deleteFlight(flight.id)"
+                                    <button *ngIf="isAdmin()" (click)="deleteFlight(flight.id)"
                                         class="bg-red-500 text-white w-full rounded">Delete</button>
+                                    <button *ngIf="isRegular()" (click)="buyTickets(flight.id)"
+                                        class="bg-green-500 text-white w-full rounded">Buy tickets</button>
                                 </td>
                             </tr>
                         </tbody>

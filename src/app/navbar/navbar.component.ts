@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../modules/auth/service/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,10 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
   public token:any;
-  constructor(private router:Router){}
+  constructor(
+	  private router:Router,
+	  private auth: AuthService
+  ){}
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
@@ -19,5 +23,13 @@ export class NavbarComponent {
   logout(){
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
+  }
+
+  public isAdmin(): boolean {
+	  return this.auth.getLoggedInRole() === 'Admin';
+  }
+
+  public isRegular(): boolean {
+	  return this.auth.getLoggedInRole() === 'Regular';
   }
 }
