@@ -11,6 +11,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FlightCreateFormComponent } from './modules/admin/flight-create-form/flight-create-form.component';
 import { FlightsViewComponent } from './modules/admin/flights-view/flights-view.component';
 import { PagesModule } from './modules/pages/pages.module';
+import { TicketsBuyComponent } from './modules/users/tickets-buy/tickets-buy/tickets-buy.component';
+import { TicketsViewComponent } from './modules/users/tickets-view/tickets-view/tickets-view.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,10 @@ import { PagesModule } from './modules/pages/pages.module';
     NavbarComponent,
     FlightCreateFormComponent,
     FlightsViewComponent,
+    // FlightsViewUsersComponent,
+    TicketsBuyComponent,
+    TicketsViewComponent,
+
   ],
   imports: [
     BrowserModule,

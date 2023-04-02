@@ -5,6 +5,7 @@ import { RegisterComponent } from './modules/users/register/register.component';
 import { FlightCreateFormComponent } from './modules/admin/flight-create-form/flight-create-form.component';
 import { FlightsViewComponent } from './modules/admin/flights-view/flights-view.component';
 import { AuthGuardService } from './modules/auth/service/auth-guard.service';
+import { TicketsBuyComponent } from './modules/users/tickets-buy/tickets-buy/tickets-buy.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'make-flight', component: FlightCreateFormComponent, canActivate: [AuthGuardService], data:{expectedRole: 'Admin'}},
   { path: '', component: FlightsViewComponent },
+  { path: 'ticket-buy/:id', component: TicketsBuyComponent}
 ];
 
 @NgModule({
