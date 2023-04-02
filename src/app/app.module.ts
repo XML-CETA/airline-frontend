@@ -13,6 +13,8 @@ import { FlightsViewComponent } from './modules/admin/flights-view/flights-view.
 import { PagesModule } from './modules/pages/pages.module';
 import { TicketsBuyComponent } from './modules/users/tickets-buy/tickets-buy/tickets-buy.component';
 import { TicketsViewComponent } from './modules/users/tickets-view/tickets-view/tickets-view.component';
+import { SearchBarComponent } from './modules/admin/search-bar/search-bar.component';
+import { FlightSearchedViewComponent } from './modules/admin/flight-searched-view/flight-searched-view.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { TicketsViewComponent } from './modules/users/tickets-view/tickets-view/
     TicketsBuyComponent,
     TicketsViewComponent,
 
+    SearchBarComponent,
+    FlightSearchedViewComponent,
   ],
   imports: [
     BrowserModule,

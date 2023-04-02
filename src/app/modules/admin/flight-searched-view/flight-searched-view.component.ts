@@ -1,38 +1,35 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ShowFlightDto } from '../models/show-flights-dto';
-import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { FilteredFlightDto } from '../models/filtered-flight-dto';
 import { FlightService } from '../flight.service';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from '../../auth/service/auth.service';
+import { SearchFlightDto } from '../models/search-flight-dto';
 
 @Component({
-  selector: 'app-flights-view',
-  templateUrl: './flights-view.component.html',
-  styleUrls: ['./flights-view.component.css']
+  selector: 'app-flight-searched-view',
+  templateUrl: './flight-searched-view.component.html',
+  styleUrls: ['./flight-searched-view.component.css']
 })
-
-export class FlightsViewComponent implements OnInit {
-
-  public flights: ShowFlightDto[] = []
-
-  public startingPoint = ""
-  public destination = ""
-  public seats = 0
-  public dateTime = new Date()
+export class FlightSearchedViewComponent {
+  public flights: FilteredFlightDto[] = []
 
   constructor(
     private flightsService: FlightService,
     private router: Router,
     private auth: AuthService
   ) { }
+  
 
   getAllFlights() {
-    this.flightsService.getAllFlights().subscribe(res => {
+    this.flightsService.search().subscribe(res => {
       this.flights = res;
     })
   }
 
   ngOnInit(): void {
-    this.getAllFlights()
+    this.router.events.subscribe(event => {
+      this.getAllFlights()
+    });
   }
 
   format(dt: Date | null) {
@@ -63,7 +60,6 @@ export class FlightsViewComponent implements OnInit {
   }
 
   buyTickets(_id: string) {
-    this.router.navigate(['/ticket-buy/'+_id])
   }
 
   public isAdmin(): boolean {

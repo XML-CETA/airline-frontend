@@ -7,6 +7,7 @@ import { FlightsViewComponent } from './modules/admin/flights-view/flights-view.
 import { AuthGuardService } from './modules/auth/service/auth-guard.service';
 import { TicketsBuyComponent } from './modules/users/tickets-buy/tickets-buy/tickets-buy.component';
 import { TicketsViewComponent } from './modules/users/tickets-view/tickets-view/tickets-view.component';
+import { FlightSearchedViewComponent } from './modules/admin/flight-searched-view/flight-searched-view.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'make-flight', component: FlightCreateFormComponent, canActivate: [AuthGuardService], data:{expectedRole: 'Admin'}},
   { path: '', component: FlightsViewComponent },
   { path: 'ticket-buy/:id', component: TicketsBuyComponent},
-  { path: 'tickets', component: TicketsViewComponent}
+  { path: 'tickets', component: TicketsViewComponent},
+  { path: 'searched', component: FlightSearchedViewComponent },
 ];
 
 @NgModule({
