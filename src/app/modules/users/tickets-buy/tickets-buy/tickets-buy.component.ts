@@ -46,7 +46,7 @@ export class TicketsBuyComponent implements OnInit{
       this.calculateFullPrice()
     },
     err => {
-      this.router.navigate(["/uflights"])
+      this.router.navigate([""])
     })
   }
 
@@ -77,7 +77,6 @@ export class TicketsBuyComponent implements OnInit{
   }
 
   public createTicket(){
-    console.log(this.amount)
     let ticket = {
       flightId: this.FlightId,
       amount: this.amount,
