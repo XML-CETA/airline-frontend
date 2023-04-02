@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { ShowFlightDto } from '../models/show-flights-dto';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { FilteredFlightDto } from '../models/filtered-flight-dto';
 import { FlightService } from '../flight.service';
+import { Router } from '@angular/router';
 import { AuthService } from '../../auth/service/auth.service';
 
 @Component({
-  selector: 'app-flights-view',
-  templateUrl: './flights-view.component.html',
-  styleUrls: ['./flights-view.component.css']
+  selector: 'app-flight-searched-view',
+  templateUrl: './flight-searched-view.component.html',
+  styleUrls: ['./flight-searched-view.component.css']
 })
-export class FlightsViewComponent implements OnInit {
-
-  public flights: ShowFlightDto[] = []
+export class FlightSearchedViewComponent {
+  public flights: FilteredFlightDto[] = []
 
   public startingPoint = ""
   public destination = ""
@@ -25,9 +24,8 @@ export class FlightsViewComponent implements OnInit {
   ) { }
 
   getAllFlights() {
-    this.flightsService.getAllFlights().subscribe(res => {
+    this.flightsService.search().subscribe(res => {
       this.flights = res;
-      console.log(res)
     })
   }
 
@@ -38,14 +36,7 @@ export class FlightsViewComponent implements OnInit {
   format(dt: Date | null) {
     if (dt == null) return ""
     let date = new Date(dt)
-    date.setHours(date.getHours()+date.getTimezoneOffset()/60)
-    let minute 
-    if (date.getMinutes()==0){
-      minute= "00"
-    }else{
-      minute= date.getMinutes()
-    }
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${minute}`
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
   }
 
 
@@ -63,7 +54,6 @@ export class FlightsViewComponent implements OnInit {
   }
 
   buyTickets(_id: string) {
-    this.router.navigate(['/ticket-buy/'+_id])
   }
 
   public isAdmin(): boolean {

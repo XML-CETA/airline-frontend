@@ -3,12 +3,13 @@
         <div class="overflow-x-auto shadow-md sm:rounded-lg">
             <div class="inline-block min-w-full align-middle">
                 <div class="overflow-hidden ">
+                    <app-search-bar></app-search-bar>
                     <table class="min-w-full divide-y divide-gray-200 table-fixed light:divide-gray-700">
                         <thead class="bg-gray-100 light:bg-gray-700">
                             <tr>
                                 <th scope="col"
                                     class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase light:text-gray-400">
-                                    Departure
+
                                 </th>
                                 <th scope="col"
                                     class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase light:text-gray-400">
@@ -17,6 +18,10 @@
                                 <th scope="col"
                                     class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase light:text-gray-400">
                                     Price
+                                </th>
+                                <th scope="col"
+                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase light:text-gray-400">
+                                    Total price
                                 </th>
                                 <th scope="col"
                                     class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase light:text-gray-400">
@@ -41,8 +46,11 @@
                                 <td
                                     class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap light:text-white">
                                     {{flight.price}}</td>
+                                <td
+                                    class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap light:text-white">
+                                    {{flight.totalPrice}}</td>
                                 <td class="py-4 px-6 text-sm font-big text-gray-900 whitespace-nowrap light:text-white">
-                                    {{flight.remainingSeats}} / {{flight.allSeats}}</td>
+                                    {{flight.neededSeats}}</td>
                                 <td
                                     class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap light:text-white">
                                     {{format(flight.dateTime)}}</td>
