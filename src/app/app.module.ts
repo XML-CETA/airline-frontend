@@ -8,19 +8,28 @@ import { TokenInterceptor } from './modules/auth/token.interceptor';
 import { RegisterComponent } from './modules/users/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FlightCreateFormComponent } from './modules/admin/flight-create-form/flight-create-form.component';
+import { FlightsViewComponent } from './modules/admin/flights-view/flights-view.component';
+import { FlightsViewUsersComponent } from './modules/users/flights-view-users/flights-view-users.component';
 import { PagesModule } from './modules/pages/pages.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    FlightCreateFormComponent,
+    FlightsViewComponent,
+    FlightsViewUsersComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     PagesModule,
 	  FormsModule,
 	  ReactiveFormsModule
