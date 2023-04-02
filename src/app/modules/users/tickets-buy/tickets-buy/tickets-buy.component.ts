@@ -66,7 +66,6 @@ export class TicketsBuyComponent implements OnInit{
   public createTicket(){
     console.log(this.amount)
     let ticket = {
-      username: "lee",
       flightId: this.FlightId,
       amount: this.amount,
     }
