@@ -21,7 +21,6 @@ import { TicketsViewComponent } from './modules/users/tickets-view/tickets-view/
     NavbarComponent,
     FlightCreateFormComponent,
     FlightsViewComponent,
-    // FlightsViewUsersComponent,
     TicketsBuyComponent,
     TicketsViewComponent,
 
