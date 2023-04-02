@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/auth/login/login.component';
-import { RoleGuardService as RoleGuard } from './modules/auth/service/role-guard.service';
 import { RegisterComponent } from './modules/users/register/register.component';
 import { FlightCreateFormComponent } from './modules/admin/flight-create-form/flight-create-form.component';
 import { FlightsViewComponent } from './modules/admin/flights-view/flights-view.component';

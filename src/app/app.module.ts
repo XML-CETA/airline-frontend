@@ -11,7 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FlightCreateFormComponent } from './modules/admin/flight-create-form/flight-create-form.component';
 import { FlightsViewComponent } from './modules/admin/flights-view/flights-view.component';
 import { FlightsViewUsersComponent } from './modules/users/flights-view-users/flights-view-users.component';
-
+import { PagesModule } from './modules/pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,10 @@ import { FlightsViewUsersComponent } from './modules/users/flights-view-users/fl
     AuthModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PagesModule,
+	  FormsModule,
+	  ReactiveFormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   bootstrap: [AppComponent]
