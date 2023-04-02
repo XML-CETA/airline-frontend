@@ -28,7 +28,6 @@ export class FlightsViewComponent implements OnInit {
   getAllFlights() {
     this.flightsService.getAllFlights().subscribe(res => {
       this.flights = res;
-      console.log(res)
     })
   }
 

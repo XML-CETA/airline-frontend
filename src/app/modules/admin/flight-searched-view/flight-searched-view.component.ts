@@ -12,10 +12,6 @@ import { SearchFlightDto } from '../models/search-flight-dto';
 })
 export class FlightSearchedViewComponent {
   public flights: FilteredFlightDto[] = []
-  public startingPoint:string = ""
-  public destination:string = ""
-  public neededSeats:number = 0
-  public dateTime:Date = new Date()
 
   constructor(
     private flightsService: FlightService,

@@ -11,7 +11,7 @@ import { SearchFlightDto } from '../models/search-flight-dto';
 export class SearchBarComponent {
   public startingPoint = ""
   public destination = ""
-  public neededSeats = 0
+  public neededSeats:number = 1
   public dateTime:Date = new Date()
 
   constructor(
