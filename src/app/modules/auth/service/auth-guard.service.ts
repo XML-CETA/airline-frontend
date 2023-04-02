@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import jwtDecode from 'jwt-decode';
 
 
 @Injectable({
@@ -8,12 +9,20 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthGuardService implements CanActivate{
 
-  constructor(private jwtHelper:JwtHelperService) { }
+  private jwtHelper: JwtHelperService = new JwtHelperService();
+  constructor() { }
 
-  canActivate(): boolean {
+  canActivate(route: ActivatedRouteSnapshot): boolean {
+    const expectedRole = route.data['expectedRole'];
     const token:any = localStorage.getItem('token');
 
     if (token==null || this.jwtHelper.isTokenExpired(token)){
+      return false;
+    }
+    
+    const payload:any = jwtDecode(token)
+
+    if (payload.custom_claims.role !== expectedRole){
       return false;
     }
     
