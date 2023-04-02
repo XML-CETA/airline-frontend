@@ -22,6 +22,7 @@ export class FlightsViewComponent implements OnInit {
   getAllFlights() {
     this.flightsService.getAllFlights().subscribe(res => {
       this.flights = res;
+      console.log(res)
     })
   }
 
@@ -32,7 +33,14 @@ export class FlightsViewComponent implements OnInit {
   format(dt: Date | null) {
     if (dt == null) return ""
     let date = new Date(dt)
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+    date.setHours(date.getHours()+date.getTimezoneOffset()/60)
+    let minute 
+    if (date.getMinutes()==0){
+      minute= "00"
+    }else{
+      minute= date.getMinutes()
+    }
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${minute}`
   }
 
 
@@ -50,6 +58,7 @@ export class FlightsViewComponent implements OnInit {
   }
 
   buyTickets(_id: string) {
+    this.router.navigate(['/ticket-buy/'+_id])
   }
 
   public isAdmin(): boolean {

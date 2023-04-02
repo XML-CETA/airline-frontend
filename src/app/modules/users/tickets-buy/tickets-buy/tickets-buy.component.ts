@@ -15,7 +15,7 @@ export class TicketsBuyComponent implements OnInit{
   destination:string = ""
   price:number = 0
   remainingSeats:number = 0
-  dateTime = new Date()
+  dateTime:string = ""
   amount:number = 1 
   fullPrice:number = 0
   
@@ -42,7 +42,7 @@ export class TicketsBuyComponent implements OnInit{
       this.destination = res.destination
       this.price = res.price
       this.remainingSeats = res.remainingSeats
-      this.dateTime = new Date(res.dateTime)
+      this.dateTime = this.format(res.dateTime)
       this.calculateFullPrice()
     },
     err => {
@@ -52,6 +52,19 @@ export class TicketsBuyComponent implements OnInit{
 
   ngOnInit(): void {
     this.getFlight()
+  }
+
+  format(dt: Date | null) {
+    if (dt == null) return ""
+    let date = new Date(dt)
+    date.setHours(date.getHours()+date.getTimezoneOffset()/60)
+    let minute 
+    if (date.getMinutes()==0){
+      minute= "00"
+    }else{
+      minute= date.getMinutes()
+    }
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${minute}`
   }
 
   calculateFullPrice(){
@@ -73,7 +86,7 @@ export class TicketsBuyComponent implements OnInit{
     this.ticketService.makeTicket(ticket).subscribe({
       next: () => {
         alert('Created successfully');
-        this.router.navigate(['/uflights'])
+        this.router.navigate([''])
       }
     });
   }
