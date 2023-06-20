@@ -15,6 +15,7 @@ import { TicketsBuyComponent } from './modules/users/tickets-buy/tickets-buy/tic
 import { TicketsViewComponent } from './modules/users/tickets-view/tickets-view/tickets-view.component';
 import { SearchBarComponent } from './modules/admin/search-bar/search-bar.component';
 import { FlightSearchedViewComponent } from './modules/admin/flight-searched-view/flight-searched-view.component';
+import { ApiKeyComponent } from './modules/users/api-key/api-key.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FlightSearchedViewComponent } from './modules/admin/flight-searched-vie
 
     SearchBarComponent,
     FlightSearchedViewComponent,
+    ApiKeyComponent,
   ],
   imports: [
     BrowserModule,
