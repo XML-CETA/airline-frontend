@@ -8,6 +8,7 @@ import { AuthGuardService } from './modules/auth/service/auth-guard.service';
 import { TicketsBuyComponent } from './modules/users/tickets-buy/tickets-buy/tickets-buy.component';
 import { TicketsViewComponent } from './modules/users/tickets-view/tickets-view/tickets-view.component';
 import { FlightSearchedViewComponent } from './modules/admin/flight-searched-view/flight-searched-view.component';
+import { ApiKeyComponent } from './modules/users/api-key/api-key.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'ticket-buy/:id', component: TicketsBuyComponent},
   { path: 'tickets', component: TicketsViewComponent},
   { path: 'searched', component: FlightSearchedViewComponent },
+  { path: 'api-key', component: ApiKeyComponent, canActivate: [AuthGuardService], data:{expectedRole: 'Regular'}},
 ];
 
 @NgModule({
